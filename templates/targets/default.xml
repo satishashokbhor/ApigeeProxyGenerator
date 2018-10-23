@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TargetEndpoint name="default">
+    <Description/>
+    <!-- Fault rules are evaluated from top to bottom in Target Endpoint -->
+    <FaultRules>
+        <!--If backend service is not reachable from API Gateway -->
+        <FaultRule name="service_unavailable_error">
+            <Step>
+                <Name>FC-ServiceUnavailableError</Name>
+            </Step>
+            <Condition>(error.status.code = 502) or 
+                      (error.status.code = 503) or 
+                      (error.status.code = 504) or 
+                      (error.status.code = 408) or 
+                      (fault.name= "ConcurrentRatelimtViolation")</Condition>
+        </FaultRule>
+        <FaultRule name="backend_error">
+            <Step>
+                <Name>EV-ExtractErrorMessage</Name>
+            </Step>
+            <Step>
+                <Name>AM-SetBackendError</Name>
+            </Step>
+            <!--In case of 401, backend will not send any response content. -->
+            <Step>
+                <Name>AM-Set401BackendError</Name>
+                <Condition>(error.status.code = 401)</Condition>
+            </Step>
+            <Condition>(error.status.code &gt;= 400)</Condition>
+        </FaultRule>
+    </FaultRules>
+    <DefaultFaultRule>
+        <AlwaysEnforce>true</AlwaysEnforce>
+        <Step>
+            <!--Set API specific documentation link. Internal Server Error specific links are in General Error Handler.-->
+            <Name>AM-SetAPIDocumentationLink</Name>
+        </Step>
+        <Step>
+            <Name>FC-GeneralErrorHandler</Name>
+        </Step>
+    </DefaultFaultRule>
+    <PreFlow name="PreFlow">
+        <Request/>
+        <Response/>
+    </PreFlow>
+    <PostFlow name="PostFlow">
+        <Request>
+            <!-- Set Language Header to EN to get all messages in English. -->
+            <Step>
+                <Name>AM-SetBackendHeaders</Name>
+            </Step>
+        </Request>
+        <Response/>
+    </PostFlow>
+    <Flows/>
+    <HTTPTargetConnection>
+        <Properties/>
+        <LoadBalancer>
+            <!-- <Server name="consent-info-v1-server" /> -->
+            <Server tal:attributes="name proxyServerName"/>
+        </LoadBalancer>
+        <!-- Path details will be added by developer after uploading to Apigee. Dont Forget to delete. :-) -->
+        <Path></Path>
+    </HTTPTargetConnection>
+</TargetEndpoint>

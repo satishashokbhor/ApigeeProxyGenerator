@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo tal:repeat="policy policies" tal:attributes="resourceName policy/policyName; version policy/policyHash"/>
+    </Policies>
+    <ProxyEndpoints>
+        <VersionInfo tal:attributes="resourceName proxyResourceName; version proxyHash"/>
+    </ProxyEndpoints>
+    <SharedFlows/>
+    <TargetEndpoints>
+        <VersionInfo tal:attributes="resourceName targetResourceName; version targetHash"/>
+    </TargetEndpoints>
+</Manifest>

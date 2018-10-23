@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<APIProxy tal:attributes="revision proxyRevision; name proxyName">
+    <Basepaths tal:content="basePath"></Basepaths>
+    <ConfigurationVersion tal:attributes="majorVersion majorVersion; minorVersion minorVersion" />
+    <CreatedAt tal:content="CreatedAt"></CreatedAt>
+    <CreatedBy tal:content="createdBy"></CreatedBy>
+    <Description tal:content="Description"></Description>
+    <DisplayName tal:content="DisplayName"></DisplayName>
+    <LastModifiedAt tal:content="LastModifiedAt"></LastModifiedAt>
+    <LastModifiedBy tal:content="createdBy"></LastModifiedBy>
+    <ManifestVersion tal:content="manifestHash"></ManifestVersion>
+    <Policies>
+        <Policy tal:repeat="policy policies" tal:content="policy/policyName"></Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

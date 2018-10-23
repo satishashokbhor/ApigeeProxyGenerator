@@ -1,0 +1,21 @@
+Python has been installed as
+  /usr/local/bin/python3
+Pip, setuptools, and wheel have been installed. To update them run
+  pip3 install --upgrade pip setuptools wheel
+
+You can install Python packages with
+  pip3 install <package>
+They will install into the site-package directory
+  /usr/local/lib/python3.7/site-packages
+
+Pip, setuptools, and wheel have been installed. To update them run
+  pip3 install --upgrade pip setuptools wheel
+
+You can install Python packages with
+  pip3 install <package>
+They will install into the site-package directory
+  /usr/local/lib/python3.7/site-packages
+
+
+For Debugging
+A debug toolbar appears along the top with the following commands from left to right: continue (F5), step over (F10), step into (F11), step out (⇧F11), restart (⇧⌘F5), and stop (⇧F5).

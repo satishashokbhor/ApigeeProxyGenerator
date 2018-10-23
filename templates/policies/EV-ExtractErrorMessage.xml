@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables async="false" continueOnError="false" enabled="true" name="EV-ExtractErrorMessage">
+    <DisplayName>EV-ExtractErrorMessage</DisplayName>
+    <Properties/>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <JSONPayload>
+        <Variable name="code">
+            <JSONPath>$.errors[0].code</JSONPath>
+        </Variable>
+        <Variable name="reference">
+            <JSONPath>$.errors[0].reference</JSONPath>
+        </Variable>
+        <Variable name="message">
+            <JSONPath>$.errors[0].message</JSONPath>
+        </Variable>
+        <Variable name="category">
+            <JSONPath>$.errors[0].category</JSONPath>
+        </Variable>
+    </JSONPayload>
+    <Source clearPayload="false">message</Source>
+    <VariablePrefix>backend.error</VariablePrefix>
+</ExtractVariables>

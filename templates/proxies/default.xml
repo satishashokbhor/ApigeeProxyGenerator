@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+    <Description/>
+    <FaultRules>
+        <FaultRule name="spike_arrest_error">
+            <Step>
+                <Name>FC-SpikeArrestError</Name>
+            </Step>
+            <Condition>ratelimit.SA-PerUser.failed = true or 
+                       ratelimit.SA-AllUsers.failed = true</Condition>
+        </FaultRule>
+        <FaultRule name="invalid_api_key">
+            <Step>
+                <Name>FC-APIKeyError</Name>
+            </Step>
+            <Condition>oauthV2.VAK-VerifyConsumer.failed= "true"</Condition>
+        </FaultRule>
+    </FaultRules>
+    <DefaultFaultRule>
+        <AlwaysEnforce>true</AlwaysEnforce>
+        <Step>
+            <!--Set API specific documentation link.-->
+            <Name>AM-SetAPIDocumentationLink</Name>
+        </Step>
+        <Step>
+            <Name>FC-GeneralErrorHandler</Name>
+        </Step>
+    </DefaultFaultRule>
+    <PreFlow name="PreFlow">
+        <Request>
+            <Step>
+                <Name>FC-AssignUUID</Name>
+            </Step>
+            <Step>
+                <Name>VAK-VerifyConsumer</Name>
+            </Step>
+        </Request>
+        <Response/>
+    </PreFlow>
+    <PostFlow name="PostFlow">
+        <Request/>
+        <Response>
+            <Step>
+                <Name>AM-SetResponseTraceIdHeader</Name>
+            </Step>
+        </Response>
+    </PostFlow>
+    <Flows>
+        <Flow tal:repeat="flow details/flows" tal:attributes="name flow/operationId">
+            <Description tal:content="flow/description"></Description>
+                <Request>
+                    <Step>
+                        <Name>KVM-GetRateLimits</Name>
+                    </Step>
+                    <Step>
+                        <Name>SA-PerUser</Name>
+                        <Condition>environment.name = "prod"</Condition>
+                    </Step>
+                    <Step>
+                        <Name>SA-AllUsers</Name>
+                        <Condition>environment.name = "prod"</Condition>
+                    </Step>
+                </Request>
+                <Response/>
+                <Condition>(proxy.pathsuffix MatchesPath "<b tal:replace="flow/pathId"></b>") and (request.verb = "<b tal:replace="flow/operationType"></b>")</Condition>
+        </Flow>
+        <Flow name="Invalid Resource">
+            <Description/>
+            <Request>
+                <Step>
+                    <Name>RF-InvalidResource</Name>
+                </Step>
+            </Request>
+            <Response/>
+        </Flow>
+    </Flows>
+    <HTTPProxyConnection>
+        <BasePath tal:content="basePath"></BasePath>
+        <Properties/>
+        <VirtualHost>https_vhost</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="default">
+        <TargetEndpoint>default</TargetEndpoint>
+    </RouteRule>
+</ProxyEndpoint>

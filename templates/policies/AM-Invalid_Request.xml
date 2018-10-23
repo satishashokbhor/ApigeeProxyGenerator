@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-Invalid_Request">
+    <DisplayName>AM-Invalid_Request</DisplayName>
+    <AssignVariable>
+        <Name>flow.error.code</Name>
+        <Value>ERR_2000_001</Value>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>flow.error.message</Name>
+        <Value>Malformed URL or Bad Request</Value>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>flow.error.category</Name>
+        <Value>BAD_REQUEST</Value>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>flow.error.status</Name>
+        <Value>400</Value>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>flow.error.reasonPhrase</Name>
+        <Value>BAD_REQUEST</Value>
+    </AssignVariable>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="error"/>
+</AssignMessage>

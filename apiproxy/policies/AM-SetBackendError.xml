@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-SetBackendError">
+    <DisplayName>AM-SetBackendError</DisplayName>
+    <Properties/>
+    <AssignVariable>
+        <Name>flow.error.code</Name>
+        <Ref>backend.error.code</Ref>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>flow.error.message</Name>
+        <Ref>backend.error.message</Ref>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>flow.error.category</Name>
+        <Ref>backend.error.category</Ref>
+        <Value>BACKEND_ERROR</Value>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>flow.error.status</Name>
+        <Ref>error.status.code</Ref>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>flow.error.reasonPhrase</Name>
+        <Ref>error.reason.phrase</Ref>
+    </AssignVariable>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="error"/>
+</AssignMessage>

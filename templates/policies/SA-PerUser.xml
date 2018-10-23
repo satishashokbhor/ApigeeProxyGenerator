@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SpikeArrest async="false" continueOnError="false" enabled="true" name="SA-PerUser">
+    <DisplayName>SA-PerUser</DisplayName>
+    <Properties/>
+    <Identifier ref="client_id"/>
+    <!-- Rate limits for the APIs is defined at kvm level -->
+    <Rate ref="kvm.consent.perUser"/>
+    <UseEffectiveCount>true</UseEffectiveCount>
+</SpikeArrest>

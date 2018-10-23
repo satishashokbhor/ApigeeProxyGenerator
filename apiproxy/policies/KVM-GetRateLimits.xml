@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<KeyValueMapOperations async="false" continueOnError="false" enabled="true" name="KVM-GetRateLimits" mapIdentifier="consent-info-v1-ratelimits">
+    <DisplayName>KVM-GetRateLimits</DisplayName>
+    <Properties/>
+    <ExclusiveCache>false</ExclusiveCache>
+    <ExpiryTimeInSecs>300</ExpiryTimeInSecs>
+    <Get assignTo="kvm.consent.allUsers" index="1">
+        <Key>
+            <Parameter>all_users</Parameter>
+        </Key>
+    </Get>
+    <Get assignTo="kvm.consent.perUser" index="1">
+        <Key>
+            <Parameter>per_user</Parameter>
+        </Key>
+    </Get>
+    <Scope>environment</Scope>
+</KeyValueMapOperations>

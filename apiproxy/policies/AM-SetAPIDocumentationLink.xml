@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-SetAPIDocumentationLink">
+    <DisplayName>AM-SetAPIDocumentationLink</DisplayName>
+    <Properties/>
+    <AssignVariable>
+        <Name>flow.error.reference</Name>
+        <!-- Later documentation link to psd2 or corporate product will be configured. -->
+        <Value>https://developer.abnamro.com/get-started</Value>
+    </AssignVariable>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="error"/>
+</AssignMessage>
