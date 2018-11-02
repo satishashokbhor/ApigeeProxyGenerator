@@ -1,6 +1,7 @@
 from zipfile import ZipFile 
 import os 
 
+
 class PrepareProxyZip(object):
 
     def get_all_file_paths(self,directory): 

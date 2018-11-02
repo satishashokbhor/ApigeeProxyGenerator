@@ -17,8 +17,10 @@
 
 8) Once Proxy pushed to Apigee then Artefacts created during process need to be deleted.
 
+9) Remove Commented Code
 
 ## Improvements
+
 
 1) Proxy pushed to Apigee need to commit in BitBucket is pending.
 

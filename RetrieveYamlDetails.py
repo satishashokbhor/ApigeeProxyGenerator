@@ -20,8 +20,9 @@ class PathModule(object):
 
 class RetrieveYamlDetails():
 
-    def readYamlData(self):
-        yamlObj = yaml.load(open("Test.yaml").read())
+    def readYamlData(self, file_):
+        # yamlObj = yaml.load(open("Test.yaml").read())
+        yamlObj = yaml.load(file_.stream)
         json_str = json.dumps(yamlObj)
         data = json.loads(json_str)
         return data

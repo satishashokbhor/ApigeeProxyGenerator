@@ -33,7 +33,7 @@ class FreeMarkerWithSimpleTal:
         context.__setattr__("proxyName",__flowObj.__getattribute__("title"))
         context.addGlobal("proxyName",__flowObj.__getattribute__("title"))
         print("Value-->",config['DEFAULT']['CREATED_BY'])
-        context.addGlobal("createdBy",config['DEFAULT']['CREATED_BY'] )
+        context.addGlobal("createdBy",config['DEFAULT']['CREATED_BY'])
         context.addGlobal("encodingStyle",config['DEFAULT']['ENCODING'] )
         context.addGlobal("standAlone",config['DEFAULT']['STANDALONE'] )
         context.addGlobal("majorVersion",config['DEFAULT']['CONFIGURATION_VERSION_MAJOR'] )
